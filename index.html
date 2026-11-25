@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Révisions Maths BTS SIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#accueil">Maths SIO</a>
+    <div class="navlinks">
+      <a href="#accueil">Accueil</a>
+      <a href="#fiches">Fiches</a>
+      <a href="#exercices">Exercices</a>
+      <a href="#entrainement">Entraînement</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#annales">Annales</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============================== ACCUEIL ============================== -->
+<section class="view" id="v-accueil">
+  <div class="hero">
+    <p class="eyebrow">BTS SIO · Épreuve E3</p>
+    <h1>Les maths pour l'info.<br>Cinq chapitres, des exos à l'infini.</h1>
+    <p class="lead">Numération, logique, algèbre de Boole, matrices et graphes orientés. Pour chaque chapitre, tu as une fiche, des exercices tirés au hasard avec leur correction, et un quiz.</p>
+    <div class="row center" style="margin-top:24px">
+      <a class="btn" href="#exercices">Tirer des exercices</a>
+      <a class="btn ghost" href="#fiches">Lire les fiches</a>
+    </div>
+    <svg viewBox="0 0 420 260" role="img" aria-label="Petit graphe orienté et bande binaire">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--blue)"/></marker></defs>
+      <g stroke="var(--blue)" stroke-width="2.4" fill="none" marker-end="url(#ar)">
+        <path d="M78 110 Q130 60 170 72"/><path d="M78 130 Q130 180 170 170"/>
+        <path d="M222 78 Q270 90 296 112"/><path d="M222 168 Q270 152 296 132"/>
+      </g>
+      <path d="M200 98 L200 144" stroke="var(--red)" stroke-width="3" stroke-dasharray="6 5"/>
+      <g font-family="Inter, sans-serif" font-weight="700" text-anchor="middle">
+        <circle cx="54" cy="120" r="26" fill="var(--paper)" stroke="var(--blue)" stroke-width="3"/><text x="54" y="127" font-size="20" fill="var(--blue)">A</text>
+        <circle cx="196" cy="72" r="26" fill="var(--paper)" stroke="var(--blue)" stroke-width="3"/><text x="196" y="79" font-size="20" fill="var(--blue)">B</text>
+        <circle cx="196" cy="170" r="26" fill="var(--red2)" stroke="var(--red)" stroke-width="3"/><text x="196" y="177" font-size="20" fill="var(--red)">C</text>
+        <circle cx="322" cy="122" r="26" fill="var(--paper)" stroke="var(--blue)" stroke-width="3"/><text x="322" y="129" font-size="20" fill="var(--blue)">D</text>
+      </g>
+      <g font-family="JetBrains Mono, monospace" font-size="14" fill="var(--soft)"><text x="120" y="66">3 j</text><text x="118" y="190">3 j</text><text x="258" y="80">2 j</text><text x="258" y="176">4 j</text></g>
+      <text x="196" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="var(--red)">chemin critique</text>
+      <g font-family="JetBrains Mono, monospace" font-size="16" font-weight="600">
+        <rect x="40" y="236" width="340" height="22" rx="5" fill="var(--blue2)"/>
+        <text x="210" y="253" text-anchor="middle" fill="var(--blue)" letter-spacing="3">1100 0000 = 192 = 0xC0</text>
+      </g>
+    </svg>
+  </div>
+  <h2>Ta progression</h2>
+  <div class="card" style="margin-bottom:20px">
+    <div class="row" style="justify-content:space-between"><b id="progTxt">0 / 15 étapes</b><button class="btn ghost" id="resetProg" type="button">Remettre à zéro</button></div>
+    <div class="prog"><i id="progBar"></i></div>
+  </div>
+  <div class="grid" id="chapCards"></div>
+</section>
+
+<!-- ============================== FICHES ============================== -->
+<section class="view" id="v-fiches">
+  <h2>Fiches de révision</h2>
+  <div class="layout">
+    <div class="side" id="ficheNav"></div>
+    <div>
+
+<article class="fiche card" data-ch="0">
+<h2>1. Numération</h2>
+<div class="box def"><b>Écriture en base b</b>Un nombre s'écrit avec des chiffres a<sub>i</sub> compris entre 0 et b−1 : N = a<sub>n</sub>×b<sup>n</sup> + … + a<sub>1</sub>×b + a<sub>0</sub>. On note la base en indice : 1011<sub>2</sub>, 157<sub>8</sub>, 2F<sub>16</sub> (ou 0x2F).</div>
+<h3>Base 2, 8 ou 16 → base 10</h3>
+<p>On additionne chaque chiffre multiplié par sa puissance de la base.</p>
+<pre>101101₂ = 32 + 8 + 4 + 1 = 45
+157₈    = 1×64 + 5×8 + 7 = 111
+0x3A7   = 3×256 + 10×16 + 7 = 935</pre>
+<h3>Base 10 → base b (divisions successives)</h3>
+<p>On divise par b jusqu'à obtenir un quotient nul, puis on lit les restes <b>de bas en haut</b>.</p>
+<pre>45 = 2×22 + 1
+22 = 2×11 + 0
+11 = 2×5  + 1
+ 5 = 2×2  + 1
+ 2 = 2×1  + 0
+ 1 = 2×0  + 1    → 45 = 101101₂</pre>
+<div class="box tip"><b>Astuce rapide</b>Retiens les puissances de 2 : 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024. Par exemple, 156 = 128 + 16 + 8 + 4, donc 156 = 10011100<sub>2</sub>.</div>
+<h3>Base 2 ↔ base 16 (paquets de 4 bits) et base 8 (paquets de 3 bits)</h3>
+<div class="scroll"><table><tr><th>Hexa</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><th>Déc.</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+<tr><th>Binaire</th><td class="mono">0000</td><td class="mono">0001</td><td class="mono">0010</td><td class="mono">0011</td><td class="mono">0100</td><td class="mono">0101</td><td class="mono">0110</td><td class="mono">0111</td><td class="mono">1000</td><td class="mono">1001</td><td class="mono">1010</td><td class="mono">1011</td><td class="mono">1100</td><td class="mono">1101</td><td class="mono">1110</td><td class="mono">1111</td></tr></table></div>
+<pre>1101 0110₂ = D6₁₆ = 214        1 101 111₂ = 157₈ = 111</pre>
+<h3>Addition binaire</h3>
+<p>On pose l'addition comme en décimal, avec 1 + 1 = 10 (on écrit 0 et on retient 1) et 1 + 1 + 1 = 11. Si le résultat dépasse le nombre de bits disponibles, il y a un <b>dépassement de capacité</b>.</p>
+<h3>Entiers signés : complément à 2</h3>
+<p>Sur n bits, pour coder −x : on écrit x en binaire, on <b>inverse tous les bits</b>, puis on <b>ajoute 1</b>. Le bit de gauche indique le signe (1 = négatif). Sur 8 bits, on code de −128 à +127.</p>
+<pre>−45 : 45 = 0010 1101 → inversé 1101 0010 → +1 = 1101 0011</pre>
+<h3>Le lien avec le réseau (SISR)</h3>
+<p>Une adresse IPv4 fait 32 bits, soit 4 octets. Un masque /26 a 26 bits à 1 : 255.255.255.<b>192</b>, car 11000000<sub>2</sub> = 192. L'adresse réseau s'obtient par un <b>ET logique</b> entre l'adresse et le masque. Avec n bits d'hôte, on a 2<sup>n</sup> − 2 adresses utilisables. Une adresse MAC fait 48 bits et une adresse IPv6 128 bits.</p>
+<div class="box warn"><b>Piège classique</b>Lire les restes de haut en bas. Le premier reste obtenu est le bit de poids <b>faible</b>, celui de droite.</div>
+</article>
+
+<article class="fiche card" data-ch="1">
+<h2>2. Logique</h2>
+<div class="box def"><b>Proposition</b>Une proposition est un énoncé qui est soit vrai (V), soit faux (F). « x &gt; 3 » n'est pas une proposition mais un <b>prédicat</b> : sa vérité dépend de x.</div>
+<h3>Connecteurs logiques</h3>
+<div class="scroll"><table><tr><th>p</th><th>q</th><th>¬p</th><th>p ∧ q (ET)</th><th>p ∨ q (OU)</th><th>p ⇒ q</th><th>p ⇔ q</th></tr>
+<tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr>
+<tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td><td><b style="color:var(--red)">F</b></td><td>F</td></tr>
+<tr><td>F</td><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td></tr></table></div>
+<div class="box def"><b>L'implication</b>p ⇒ q est fausse <b>seulement</b> quand p est vraie et q fausse, et p ⇒ q ≡ ¬p ∨ q.<br>La <b>réciproque</b> de p ⇒ q est q ⇒ p : elle n'est pas forcément vraie. La <b>contraposée</b> est ¬q ⇒ ¬p : elle est toujours équivalente à p ⇒ q.<br>La négation de p ⇒ q est p ∧ ¬q.</div>
+<h3>Lois de De Morgan et équivalences utiles</h3>
+<pre>¬(p ∧ q) ≡ ¬p ∨ ¬q          ¬(p ∨ q) ≡ ¬p ∧ ¬q
+p ⇔ q ≡ (p ⇒ q) ∧ (q ⇒ p)    ¬(¬p) ≡ p</pre>
+<h3>Quantificateurs</h3>
+<p>∀ veut dire « pour tout » et ∃ veut dire « il existe ». Pour la négation, on échange ∀ et ∃ et on nie la propriété.</p>
+<pre>¬(∀x, P(x)) ≡ ∃x, ¬P(x)
+¬(∃x, P(x)) ≡ ∀x, ¬P(x)
+« Tous les serveurs sont à jour » → contraire : « Au moins un serveur n'est pas à jour »</pre>
+<p>Pour montrer qu'un « pour tout » est faux, il suffit d'un <b>contre-exemple</b>.</p>
+<h3>Ensembles</h3>
+<ul>
+<li>A ∪ B : les éléments de A <b>ou</b> de B. A ∩ B : ceux de A <b>et</b> de B. A \ B : ceux de A qui ne sont pas dans B.</li>
+<li>Le complémentaire de A dans E : les éléments de E qui ne sont pas dans A.</li>
+<li>A × B : l'ensemble des couples (a, b). P(E) : l'ensemble des parties de E.</li>
+</ul>
+<div class="box def"><b>Cardinaux</b>card(A ∪ B) = card A + card B − card(A ∩ B)<br>card(A × B) = card A × card B<br>Si card E = n, alors card P(E) = 2<sup>n</sup>.</div>
+<div class="box tip"><b>Le lien logique et ensembles</b>∪ correspond au OU, ∩ au ET et le complémentaire au NON. Les lois de De Morgan marchent aussi pour les ensembles.</div>
+</article>
+
+<article class="fiche card" data-ch="2">
+<h2>3. Algèbre de Boole</h2>
+<p>Les variables valent 0 ou 1. On note a·b pour ET, a + b pour OU et <span class="ov">a</span> pour NON a.</p>
+<h3>Règles de calcul</h3>
+<div class="scroll"><table><tr><th>Règle</th><th>Avec +</th><th>Avec ·</th></tr>
+<tr><td>Neutre</td><td>a + 0 = a</td><td>a · 1 = a</td></tr>
+<tr><td>Absorbant</td><td>a + 1 = 1</td><td>a · 0 = 0</td></tr>
+<tr><td>Complément</td><td>a + <span class="ov">a</span> = 1</td><td>a · <span class="ov">a</span> = 0</td></tr>
+<tr><td>Idempotence</td><td>a + a = a</td><td>a · a = a</td></tr>
+<tr><td>Absorption</td><td>a + a·b = a</td><td>a·(a + b) = a</td></tr>
+<tr><td>Distributivité</td><td>a + b·c = (a + b)(a + c)</td><td>a·(b + c) = a·b + a·c</td></tr>
+<tr><td>Simplification</td><td colspan="2">a + <span class="ov">a</span>·b = a + b</td></tr>
+<tr><td>De Morgan</td><td><span class="ov">a + b</span> = <span class="ov">a</span>·<span class="ov">b</span></td><td><span class="ov">a · b</span> = <span class="ov">a</span> + <span class="ov">b</span></td></tr></table></div>
+<pre>E = a·b + a·b̄ + ā·b
+  = a·(b + b̄) + ā·b = a + ā·b = a + b</pre>
+<h3>Tableaux de Karnaugh</h3>
+<p>Les lignes et les colonnes suivent le <b>code de Gray</b> (00, 01, 11, 10) : deux cases voisines ne diffèrent que d'un bit. On regroupe les 1 par blocs rectangulaires de <b>1, 2, 4, 8 ou 16</b> cases, les plus grands possibles, avec le moins de blocs possible. Les bords opposés se touchent, et les 4 coins aussi. Chaque bloc donne un produit où ne restent que les variables qui ne changent pas.</p>
+<div class="scroll"><table style="max-width:420px"><tr><th>a \ bc</th><th>00</th><th>01</th><th>11</th><th>10</th></tr>
+<tr><th>0</th><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><th>1</th><td>0</td><td>0</td><td>1</td><td>0</td></tr></table></div>
+<p>Bloc (000, 001) → <span class="ov">a</span>·<span class="ov">b</span> ; bloc (011, 111) → b·c. Donc F = <span class="ov">a</span>·<span class="ov">b</span> + b·c.</p>
+<h3>Portes logiques</h3>
+<p>Il existe les portes ET, OU et NON, mais aussi NAND (<span class="ov">a·b</span>), NOR (<span class="ov">a + b</span>) et XOR. Le OU exclusif a ⊕ b = <span class="ov">a</span>·b + a·<span class="ov">b</span> vaut 1 quand a et b sont différents. La porte NAND est <b>universelle</b> : on peut tout construire avec elle.</p>
+<div class="box warn"><b>Piège classique</b>Le complément d'un produit n'est pas le produit des compléments : <span class="ov">a·b</span> ≠ <span class="ov">a</span>·<span class="ov">b</span>. Applique De Morgan.</div>
+</article>
+
+<article class="fiche card" data-ch="3">
+<h2>4. Matrices</h2>
+<h3>Définitions</h3>
+<p>Une matrice n × p a n lignes et p colonnes. On note a<sub>ij</sub> le coefficient de la ligne i et de la colonne j. On additionne deux matrices de même taille terme à terme. Pour multiplier une matrice par un nombre k, on multiplie chaque coefficient par k.</p>
+<h3>Produit de matrices</h3>
+<div class="box def"><b>Règle</b>(n × p) × (p × q) donne une matrice (n × q). Le coefficient (i, j) est la somme des produits de la ligne i de A par la colonne j de B.</div>
+<pre>⎡1 2⎤   ⎡0 1⎤   ⎡1×0+2×1  1×1+2×0⎤   ⎡2 1⎤
+⎣3 4⎦ × ⎣1 0⎦ = ⎣3×0+4×1  3×1+4×0⎦ = ⎣4 3⎦</pre>
+<div class="box warn"><b>Piège classique</b>En général A×B ≠ B×A : le produit n'est pas commutatif. Et A×B n'existe que si le nombre de colonnes de A est égal au nombre de lignes de B.</div>
+<h3>Identité, puissances et inverse</h3>
+<p>I = (1 0 ; 0 1) et A×I = I×A = A. A² = A×A, A³ = A²×A… Pour A = (a b ; c d), on calcule det A = ad − bc. Si det A ≠ 0, A est inversible :</p>
+<pre>A⁻¹ = 1/(ad − bc) × ⎡ d  −b⎤
+                     ⎣−c   a⎦</pre>
+<p>L'inverse permet de résoudre un système AX = B : X = A<sup>−1</sup>B.</p>
+<h3>Matrices booléennes</h3>
+<p>Les coefficients valent 0 ou 1 et on calcule avec 1 + 1 = 1. Le produit booléen A ⊙ B se calcule comme un produit normal, avec ces règles.</p>
+<h3>Matrice d'adjacence d'un graphe</h3>
+<p>m<sub>ij</sub> = 1 s'il existe un arc de i vers j. Le coefficient (i, j) de <b>M<sup>k</sup></b> donne le <b>nombre de chemins de longueur k</b> de i vers j. Avec le produit booléen M<sup>[k]</sup>, un 1 indique qu'au moins un tel chemin existe.</p>
+<h3>Application : chiffrement de Hill</h3>
+<p>On chiffre les lettres par paires avec Y = A×X modulo 26. La matrice A doit avoir un déterminant premier avec 26.</p>
+</article>
+
+<article class="fiche card" data-ch="4">
+<h2>5. Graphes orientés</h2>
+<h3>Vocabulaire</h3>
+<ul>
+<li>Un graphe orienté est formé de <b>sommets</b> et d'<b>arcs</b> (x, y). x est un prédécesseur de y, et y un successeur de x.</li>
+<li>Le demi-degré extérieur d<sup>+</sup>(x) est le nombre de successeurs de x, et le demi-degré intérieur d<sup>−</sup>(x) son nombre de prédécesseurs. La somme des d<sup>+</sup> est égale au nombre d'arcs.</li>
+<li>Un <b>chemin</b> est une suite d'arcs qui s'enchaînent. Sa longueur est son nombre d'arcs.</li>
+<li>Un <b>circuit</b> est un chemin qui revient à son point de départ. Une <b>boucle</b> est un arc (x, x).</li>
+</ul>
+<p>On représente un graphe par un dessin, un tableau des successeurs (ou des prédécesseurs), ou une matrice d'adjacence.</p>
+<h3>Fermeture transitive</h3>
+<p>Le graphe Ĝ a un arc de x vers y dès qu'il existe un chemin de x vers y dans G. Sa matrice vaut M̂ = M ⊕ M<sup>[2]</sup> ⊕ … ⊕ M<sup>[n]</sup>.</p>
+<p><b>Algorithme de Roy-Warshall</b> : pour chaque sommet k, chaque prédécesseur de k reçoit aussi tous les successeurs de k.</p>
+<pre>pour k de 1 à n :
+  pour i de 1 à n :
+    si M[i][k] = 1 :
+      pour j de 1 à n :
+        si M[k][j] = 1 : M[i][j] ← 1</pre>
+<h3>Niveaux (graphe sans circuit)</h3>
+<p>Le niveau 0 contient les sommets sans prédécesseur. On les retire, et les nouveaux sommets sans prédécesseur forment le niveau 1. On continue jusqu'au bout. C'est impossible s'il y a un circuit.</p>
+<h3>Ordonnancement : méthode MPM</h3>
+<p>Chaque tâche est un sommet. On ajoute un sommet « Début » et un sommet « Fin ».</p>
+<div class="box def"><b>Les formules</b><b style="display:inline">Date au plus tôt</b> t(x) = max sur les prédécesseurs p de [t(p) + durée(p)]. On remplit de gauche à droite.<br><b style="display:inline">Date au plus tard</b> T(x) = min sur les successeurs s de T(s) − durée(x). On remplit de droite à gauche, en partant de T(Fin) = t(Fin).<br><b style="display:inline">Marge totale</b> MT = T − t. <b style="display:inline">Marge libre</b> ML = min sur les successeurs de t(s) − [t(x) + durée(x)].<br>Le <b style="display:inline">chemin critique</b> est formé des tâches de marge totale nulle.</div>
+<div class="scroll"><table><tr><th>Tâche</th><th>Durée</th><th>Antériorité</th><th>t</th><th>T</th><th>Marge totale</th></tr>
+<tr><td>A</td><td>3</td><td>—</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B</td><td>2</td><td>A</td><td>3</td><td>5</td><td>2</td></tr>
+<tr><td>C</td><td>4</td><td>A</td><td>3</td><td>3</td><td>0</td></tr>
+<tr><td>D</td><td>1</td><td>B, C</td><td>7</td><td>7</td><td>0</td></tr></table></div>
+<p>Le projet dure 8 jours. Le chemin critique est A → C → D.</p>
+<div class="box warn"><b>Piège classique</b>Au plus tôt, on prend le <b>max</b>. Au plus tard, on prend le <b>min</b>. Une tâche critique en retard retarde tout le projet.</div>
+</article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== EXERCICES ============================== -->
+<section class="view" id="v-exercices">
+  <h2>Exercices au hasard</h2>
+  <p class="lead">Choisis un chapitre et un niveau : le site tire une série d'exercices dans la base. Ceux marqués « nombres aléatoires » changent de valeurs à chaque tirage, avec la correction recalculée.</p>
+  <div class="chips" id="exNav" style="margin:22px 0 12px"></div>
+  <div class="row center exctl">
+    <div class="chips" id="lvlNav" role="group" aria-label="Niveau"></div>
+    <label class="cnt">Nombre <select id="exCount"><option>3</option><option selected>5</option><option>8</option></select></label>
+    <button class="btn" id="exDraw" type="button">Nouvelle série</button>
+  </div>
+  <p class="exinfo" id="exInfo"></p>
+  <div id="exList"></div>
+</section>
+
+<!-- ============================== ENTRAINEMENT ============================== -->
+<section class="view" id="v-entrainement">
+  <h2>Entraînement express</h2>
+  <p class="lead">Des conversions tirées au hasard, à l'infini, avec ta réponse vérifiée tout de suite. C'est parfait pour 5 minutes dans le RER.</p>
+  <div class="trainer">
+    <div class="card">
+      <label for="genType"><b>Type d'exercice</b></label>
+      <select id="genType" style="margin-top:6px">
+        <option value="mix">Tout mélanger</option>
+        <option value="d2b">Décimal → binaire</option>
+        <option value="b2d">Binaire → décimal</option>
+        <option value="d2h">Décimal → hexadécimal</option>
+        <option value="h2d">Hexadécimal → décimal</option>
+        <option value="b2h">Binaire → hexadécimal</option>
+        <option value="o2d">Octal → décimal</option>
+        <option value="c2">Complément à 2 (8 bits)</option>
+        <option value="bool">Évaluer une expression booléenne</option>
+      </select>
+      <div class="prompt" id="genQ" aria-live="polite"></div>
+      <form class="row" id="genForm" autocomplete="off">
+        <input type="text" id="genA" aria-label="Ta réponse" placeholder="Ta réponse">
+        <button class="btn" type="submit">Vérifier</button>
+        <button class="btn ghost" type="button" id="genNext">Suivant</button>
+      </form>
+      <div class="fb" id="genFb" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <div class="qhead"><span>Bonnes réponses</span><span>Série en cours</span></div>
+      <div class="row" style="justify-content:space-between"><div class="stat" id="genScore">0/0</div><div class="stat" id="genStreak" style="color:var(--red)">0</div></div>
+      <h3>Rappels éclair</h3>
+      <ul style="padding-left:20px;margin:0">
+        <li>Binaire : pas besoin des zéros à gauche, sauf en complément à 2 (8 bits).</li>
+        <li>Hexa : écris les lettres A à F, sans « 0x ».</li>
+        <li>Booléen : réponds 0 ou 1.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== QUIZ ============================== -->
+<section class="view" id="v-quiz">
+  <h2>Quiz</h2>
+  <p class="lead">8 questions par chapitre, ou un mélange de 10. Les réponses sont mélangées à chaque fois, avec l'explication après chaque question.</p>
+  <div class="chips" id="quizNav" style="margin:22px 0"></div>
+  <div class="card" id="quizBox"><p>Choisis un quiz au-dessus pour commencer.</p></div>
+</section>
+
+<section class="view" id="v-annales">
+  <h2>Sujets d'entraînement</h2>
+  <h3 style="margin-top:8px">Sujets blancs à télécharger (PDF)</h3>
+  <p style="color:var(--soft)">Ces 3 sujets ont été écrits pour ce site, au format de l'examen : 2 h, 3 exercices, 20 points. Imprime le sujet, fais-le en temps limité, puis compare avec le corrigé.</p>
+  <div class="grid pdfs">
+    <div class="card">
+      <h3 style="margin-top:0">Sujet blanc n°1</h3>
+      <p class="pdf-desc">NetCom, migration d'un serveur : chiffrement affine, hexadécimal, calcul booléen, MPM.</p>
+      <div class="row"><a class="btn" href="annales/sujet-blanc-1.pdf" target="_blank" rel="noopener">Sujet</a><a class="btn ghost" href="annales/corrige-sujet-blanc-1.pdf" target="_blank" rel="noopener">Corrigé</a></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Sujet blanc n°2</h3>
+      <p class="pdf-desc">Clinique Santé+ : adressage IP, PGCD, ensembles, quantificateurs, matrices d'adjacence, chiffrement de Hill.</p>
+      <div class="row"><a class="btn" href="annales/sujet-blanc-2.pdf" target="_blank" rel="noopener">Sujet</a><a class="btn ghost" href="annales/corrige-sujet-blanc-2.pdf" target="_blank" rel="noopener">Corrigé</a></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Sujet blanc n°3</h3>
+      <p class="pdf-desc">CloudNine : RSA avec une trace d'algorithme Python, Karnaugh, MPM avec marges libres.</p>
+      <div class="row"><a class="btn" href="annales/sujet-blanc-3.pdf" target="_blank" rel="noopener">Sujet</a><a class="btn ghost" href="annales/corrige-sujet-blanc-3.pdf" target="_blank" rel="noopener">Corrigé</a></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px">Sujet blanc n°1 — à faire directement sur le site</h3>
+  <p style="color:var(--soft)">Ce sujet a été écrit pour ce site, dans le style des sujets officiels. Fais-le en temps limité, puis ouvre le corrigé.</p>
+  <div class="card">
+    <p><b>Contexte.</b> Tu es technicien SISR dans l'entreprise NetCom, qui prépare la migration de son serveur de fichiers.</p>
+    <h3>Exercice 1 — Chiffrement (7 points)</h3>
+    <p>Pour transmettre des mots de code, NetCom utilise le chiffrement affine y ≡ 9x + 4 [26], avec A = 0, …, Z = 25.</p>
+    <ol><li>Justifier que 9 est inversible modulo 26 et déterminer son inverse.</li><li>Chiffrer le mot WIFI.</li><li>Déchiffrer la lettre J.</li><li>La clé d'un équipement est 0xC4. Donner son écriture en binaire puis en décimal.</li></ol>
+    <h3>Exercice 2 — Logique (5 points)</h3>
+    <p>Une alarme S se déclenche selon les variables p (porte ouverte), b (badge valide), m (mouvement détecté) et n (nuit) : S = p·<span class="ov">b</span> + p·<span class="ov">b</span>·m + m·n.</p>
+    <ol><li>Simplifier S.</li><li>Donner l'expression de <span class="ov">S</span> sous forme d'un produit, à l'aide des lois de De Morgan.</li><li>L'alarme se déclenche-t-elle de jour, porte ouverte, avec un badge valide et un mouvement ?</li></ol>
+    <h3>Exercice 3 — Ordonnancement (8 points)</h3>
+    <div class="scroll"><table><tr><th>Tâche</th><th>Description</th><th>Durée (jours)</th><th>Antériorité</th></tr>
+    <tr><td>A</td><td style="text-align:left">Inventaire</td><td>1</td><td>—</td></tr>
+    <tr><td>B</td><td style="text-align:left">Sauvegarde</td><td>2</td><td>A</td></tr>
+    <tr><td>C</td><td style="text-align:left">Installation du nouveau serveur</td><td>3</td><td>A</td></tr>
+    <tr><td>D</td><td style="text-align:left">Migration des données</td><td>2</td><td>B, C</td></tr>
+    <tr><td>E</td><td style="text-align:left">Formation des utilisateurs</td><td>2</td><td>C</td></tr>
+    <tr><td>F</td><td style="text-align:left">Mise en production</td><td>1</td><td>D, E</td></tr></table></div>
+    <ol><li>Déterminer les niveaux du graphe des tâches.</li><li>Calculer les dates au plus tôt et au plus tard de chaque tâche, puis la durée minimale du projet.</li><li>Donner les marges totales et le ou les chemins critiques.</li><li>La sauvegarde B prend 2 jours de retard. Quelle est la conséquence ?</li></ol>
+    <details class="ex"><summary>Voir le corrigé complet</summary><div class="sol">
+      <b>Exercice 1</b>
+      <p>1. PGCD(9, 26) = 1, donc 9 est inversible modulo 26. Comme 9 × 3 = 27 = 26 + 1, l'inverse de 9 est 3.</p>
+      <p>2. W = 22 → 9×22 + 4 = 202 ≡ 20 → U. I = 8 → 76 ≡ 24 → Y. F = 5 → 49 ≡ 23 → X. WIFI devient <b>UYXY</b>.</p>
+      <p>3. x ≡ 3(y − 4) [26]. Pour J = 9 : 3 × 5 = 15 → <b>P</b>. Vérification : 9×15 + 4 = 139 ≡ 9 → J ✔.</p>
+      <p>4. C = 1100 et 4 = 0100, donc 0xC4 = 1100 0100<sub>2</sub> = 128 + 64 + 4 = <b>196</b>.</p>
+      <b>Exercice 2</b>
+      <p>1. Par absorption, p·<span class="ov">b</span> + p·<span class="ov">b</span>·m = p·<span class="ov">b</span>. Donc <b>S = p·<span class="ov">b</span> + m·n</b>.</p>
+      <p>2. <span class="ov">S</span> = <span class="ov">p·b̄</span> · <span class="ov">m·n</span> = <b>(<span class="ov">p</span> + b)·(<span class="ov">m</span> + <span class="ov">n</span>)</b>.</p>
+      <p>3. p = 1, b = 1, m = 1, n = 0 : S = 1·0 + 1·0 = 0. L'alarme ne se déclenche pas.</p>
+      <b>Exercice 3</b>
+      <p>1. Niveau 0 : A. Niveau 1 : B, C. Niveau 2 : D, E. Niveau 3 : F.</p>
+      <div class="scroll"><table><tr><th>Tâche</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+      <tr><th>t (au plus tôt)</th><td>0</td><td>1</td><td>1</td><td>4</td><td>4</td><td>6</td></tr>
+      <tr><th>T (au plus tard)</th><td>0</td><td>2</td><td>1</td><td>4</td><td>4</td><td>6</td></tr>
+      <tr><th>Marge totale</th><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table></div>
+      <p>2. t(D) = max(1+2, 1+3) = 4 et t(F) = max(4+2, 4+2) = 6. La fin est à 6 + 1 = <b>7 jours</b>.</p>
+      <p>3. Il y a deux chemins critiques : <b>A → C → D → F</b> et <b>A → C → E → F</b>.</p>
+      <p>4. B n'a qu'1 jour de marge totale. Avec 2 jours de retard, le projet prend 1 jour de retard et dure <b>8 jours</b>.</p>
+    </div></details>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Site de révision pour l'épreuve E3 « Mathématiques pour l'informatique » du BTS SIO. Les exercices sont rédigés pour l'entraînement et ne sont pas des sujets officiels. Ta progression reste dans ton navigateur.</div></footer>
+
+<script src="exercices.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
